@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'nzb'
   s.version = '0.0.1'
-  s.summary = 'Nzb File Parser'
+  s.summary = 'A library for parsing nzb files using libxml for speed'
   s.email    = "kieran[AT]invisiblelines.com"
   s.homepage = "http://github.com/kieranj/nzb"
   # s.rubyforge_project = "nzb"
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
     "lib/nzb/parser.rb",
     "README.rdoc"
   ]
-  s.text_files = [
+  s.test_files = [
     "spec/fixtures/sample.nzb",
     "spec/file_spec.rb",
     "spec/segment_spec.rb",
