@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.summary = 'A library for parsing nzb files using libxml for speed'
   s.email    = "kieran[AT]invisiblelines.com"
   s.homepage = "http://github.com/kieranj/nzb"
-  # s.rubyforge_project = "nzb"
+  s.rubyforge_project = "nzb"
   s.description = "Library for parsing NZB files."
   s.has_rdoc = true
   s.authors = [ 'Kieran Johnson' ]
