@@ -1,0 +1,21 @@
+= Read Me
+
+Nzb - Ruby library for parsing nzb files
+
+  by Kieran Johnson
+  http://github.com/kieranj/nzb
+
+== Installation:
+
+  $ gem sources -a http://gems.github.com/ (you only need to do this once)
+  $ gem install kieranj-nzb
+
+== Usage:
+
+  require 'rubygems'
+  require 'kieranj-nzb'
+
+  # Parse your file
+  fileset = Nzb.parser(file)
+  
+  # This returns an array of file objects. Each file in turn contains an array of segments. Each segment has the msg_id, number and bytes.
