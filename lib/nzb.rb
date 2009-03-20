@@ -1,4 +1,4 @@
-%w(rubygems libxml).each { |lib| require lib }
+%w(rubygems nokogiri).each { |lib| require lib }
 
 # = Overview:
 # A library for parsing nzb files using libxml for speed
@@ -14,7 +14,7 @@
 #   
 #   n = Nzb.parse(file) # fileset
 
-class Nzb
+module Nzb
 
   module VERSION
     MAJOR = 0
@@ -29,7 +29,7 @@ class Nzb
 
   end
 
-  %w(file segment parser).each do |lib|
+  %w(file fileset segment parser).each do |lib|
     require ::File.join(::File.dirname(__FILE__), 'nzb', lib)
   end
   
@@ -42,3 +42,6 @@ class Nzb
   end
 
 end
+
+# puts Nzb.parse("/Users/kieran/Desktop/cs4.nzb").inspect
+Nzb.parse("/Users/kieran/Desktop/cs4.nzb")

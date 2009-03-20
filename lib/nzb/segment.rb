@@ -1,12 +1,12 @@
-class Nzb
+module Nzb
   
   class Segment
     
     attr_writer :msgid
     
     def initialize(attrs)
-      @number = attrs["number"]
-      @bytes  = attrs["bytes"]
+      @number = attrs[1]
+      @bytes  = attrs[3]
     end
     
   end

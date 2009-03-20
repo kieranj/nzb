@@ -1,44 +1,42 @@
-class Nzb
+module Nzb
   
   class Parser
   
     def initialize(file)
-      @parser           = LibXML::XML::SaxParser.new
-      @parser.file      = file
-      @parser.callbacks = Callbacks.new
+      @parser = Nokogiri::XML::SAX::Parser.new(Doc.new)
+      @file   = file
     end
     
     def parse
-      @parser.parse
-      @parser.callbacks.files
+      @parser.parse_file(@file)
+      @parser.document.fileset
     end
 
-    class Callbacks
-      include LibXML::XML::SaxParser::Callbacks
+    class Doc < Nokogiri::XML::SAX::Document
     
-      attr_reader :files
+      attr_reader :fileset
     
       def initialize
-        @files = []
+        @fileset = Fileset.new
       end
       
-      def on_start_element(name, attrs)
+      def start_element(name, attrs)
         case name
         when "file"
-          @files << File.new(attrs)
+          @fileset.add_file(File.new(attrs))
         when "segment"
-          @segment = @files.last.add_segment(attrs)
+          @segment = @fileset.files.last.add_segment(attrs)
         when "group"
           @group = true
         end
       end
           
-      def on_characters(text)
+      def characters(text)
         if @segment
           @segment.msgid = text.strip
           @segment = nil
         elsif @group
-          @files.last.add_group(text.strip)
+          @fileset.files.last.add_group(text.strip)
           @group = nil
         end
       end
