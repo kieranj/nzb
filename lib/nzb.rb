@@ -42,6 +42,3 @@ module Nzb
   end
 
 end
-
-# puts Nzb.parse("/Users/kieran/Desktop/cs4.nzb").inspect
-Nzb.parse("/Users/kieran/Desktop/cs4.nzb")

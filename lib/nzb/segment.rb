@@ -2,11 +2,11 @@ module Nzb
   
   class Segment
     
-    attr_writer :msgid
+    attr_accessor :msgid, :number, :bytes
     
     def initialize(attrs)
-      @number = attrs[1]
-      @bytes  = attrs[3]
+      @bytes  = attrs[1]
+      @number = attrs[3]
     end
     
   end
